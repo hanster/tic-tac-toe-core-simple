@@ -25,8 +25,8 @@ module TicTacToeCore
     it "places a marker in the correct position" do
       next_board = empty_three_board.move(0, x_marker)
       expect(next_board.positions).to eq([x_marker, empty_mark, empty_mark,
-                                         empty_mark, empty_mark, empty_mark,
-                                         empty_mark, empty_mark, empty_mark])
+                                          empty_mark, empty_mark, empty_mark,
+                                          empty_mark, empty_mark, empty_mark])
     end
 
     it "places a marker which does not affect the previous board" do
@@ -36,8 +36,8 @@ module TicTacToeCore
                                                  empty_mark, empty_mark, empty_mark])
 
       expect(next_board.positions).to eq([x_marker, empty_mark, empty_mark,
-                                         empty_mark, empty_mark, empty_mark,
-                                         empty_mark, empty_mark, empty_mark])
+                                          empty_mark, empty_mark, empty_mark,
+                                          empty_mark, empty_mark, empty_mark])
     end
 
     it "a position is not available once a move has been made there" do
@@ -138,8 +138,37 @@ module TicTacToeCore
       expect(next_board.marker_at(1)).to eq(o_marker)
     end
 
-    it "returns the winner" do
+    it "returns won? as true if someone has won" do
+      board = Board.new([x_marker, empty_mark, empty_mark,
+                         x_marker, empty_mark, empty_mark,
+                         x_marker, empty_mark, empty_mark])
+      expect(board.won?).to be true
+    end
 
+    it "return tie? true if the board is full and noone has won"do
+      board = Board.new([x_marker, o_marker, x_marker,
+                         x_marker, o_marker, x_marker,
+                         o_marker, x_marker, o_marker])
+      expect(board.tie?).to be true
+    end
+
+    it "returns the winner as x marker" do
+      board = Board.new([x_marker, empty_mark, empty_mark,
+                         x_marker, empty_mark, empty_mark,
+                         x_marker, empty_mark, empty_mark])
+      expect(board.winner).to eq(x_marker)
+    end
+
+    it "returns the winner as o marker" do
+      board = Board.new([o_marker, empty_mark, empty_mark,
+                         o_marker, empty_mark, empty_mark,
+                         o_marker, empty_mark, empty_mark])
+      expect(board.winner).to eq(o_marker)
+    end
+
+    it "returns the number of moves made" do
+      board = Board.create_empty
+      expect(board.moves_made).to eq(0)
     end
   end
 end

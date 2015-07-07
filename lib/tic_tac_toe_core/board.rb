@@ -13,6 +13,7 @@ module TicTacToeCore
       Board.new(starting_positions.split(''))
     end
 
+
     def initialize(positions)
       @positions = positions
     end
@@ -33,11 +34,22 @@ module TicTacToeCore
       end
     end
 
+    def winner
+      winning_row = find_winning_row
+      return first_in_row(winning_row) unless winning_row.nil?
+      nil
+    end
+
+    def won?
+      !find_winning_row.nil?
+    end
+
+    def tie?
+      !won? && no_more_moves?
+    end
+
     def finished?
-      line_win = WINNING_ROWS.any? do |winning_row|
-        row_has_winner?(winning_row)
-      end
-      line_win || available_moves.length == 0
+      won? || tie?
     end
 
     def all_moves
@@ -48,13 +60,29 @@ module TicTacToeCore
       positions[index]
     end
 
+    def moves_made
+      positions.each_index.count do |position|
+        !is_available?(position)
+      end
+
+    end
+
     private
 
-    def row_has_winner?(row)
-      (1...row.length).each do |index|
-        return false if positions[row[index]] == EMPTY_MARK || first_in_row(row) != positions[row[index]]
+    def no_more_moves?
+      available_moves.length == 0
+    end
+
+    def find_winning_row
+      WINNING_ROWS.find do |winning_row|
+        row_has_winner?(winning_row)
       end
-      true
+    end
+
+    def row_has_winner?(row)
+      row.all? do |index|
+        positions[index] != EMPTY_MARK && positions[index] == first_in_row(row)
+      end
     end
 
     def first_in_row(row)
