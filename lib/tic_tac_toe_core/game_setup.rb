@@ -1,3 +1,8 @@
+require 'tic_tac_toe_core/human_player'
+require 'tic_tac_toe_core/computer_player'
+require 'tic_tac_toe_core/board'
+require 'tic_tac_toe_core/game'
+
 module TicTacToeCore
   class GameSetup
     HVH_GAME_TYPE = 1
@@ -11,7 +16,6 @@ module TicTacToeCore
       CVC_GAME_TYPE  => 'Computer vs Computer'
     }
     BOARD_OPTIONS = {
-      2 => '2x2',
       3 => '3x3',
       4 => '4x4'
     }

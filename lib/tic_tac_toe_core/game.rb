@@ -38,7 +38,7 @@ module TicTacToeCore
     SECOND = 1
 
     def draw
-      user_interface.draw(board)
+      user_interface.draw(board, current_player.marker)
     end
 
     def current_player

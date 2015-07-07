@@ -57,7 +57,7 @@ module TicTacToeCore
     end
 
     it "returns the board options" do
-      expect(GameSetup.get_board_options).to eq(["2x2", "3x3", "4x4"])
+      expect(GameSetup.get_board_options).to eq(["3x3", "4x4"])
     end
 
     def expect_players_to_be(players, player_1, player_2)
