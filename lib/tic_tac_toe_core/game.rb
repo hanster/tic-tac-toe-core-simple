@@ -1,9 +1,11 @@
 module TicTacToeCore
   class Game
-    def initialize(board, players, ui)
+    attr_reader :players, :board, :user_interface
+
+    def initialize(board, players, user_interface)
       @board = board
       @players = players
-      @ui = ui
+      @user_interface = user_interface
     end
 
     def running?
@@ -19,16 +21,24 @@ module TicTacToeCore
     end
 
     def play_turn
-      @board = board.move(current_player.next_move(board), current_player.marker)
+      update_board(current_player.next_move(board))
+    end
+
+    def make_move(move)
+      update_board(move)
     end
 
     private
+
+    def update_board(move)
+      @board = board.move(move, current_player.marker)
+    end
 
     FIRST = 0
     SECOND = 1
 
     def draw
-      ui.draw(board)
+      user_interface.draw(board)
     end
 
     def current_player
@@ -38,7 +48,5 @@ module TicTacToeCore
         players[SECOND]
       end
     end
-
-    attr_reader :players, :board, :ui
   end
 end

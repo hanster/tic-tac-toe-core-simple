@@ -3,25 +3,25 @@ module TicTacToeCore
     EMPTY_MARK = '-'
     WINNING_ROWS = [
       [0, 1, 2], [3, 4, 5], [6, 7, 8],
-    [0, 3, 6], [1, 4, 7], [2, 5, 8],
-    [0, 4, 8], [2, 4, 6]]
+      [0, 3, 6], [1, 4, 7], [2, 5, 8],
+      [0, 4, 8], [2, 4, 6]]
 
-    attr_reader :positions
+    attr_reader :positions ,:size
 
     def self.create_empty(size = 3)
       starting_positions = EMPTY_MARK * size * size
-      Board.new(starting_positions.split(''))
+      Board.new(size, starting_positions.split(''))
     end
 
-
-    def initialize(positions)
+    def initialize(size, positions)
+      @size = size
       @positions = positions
     end
 
     def move(index, marker)
       new_positions = positions.dup
       new_positions[index] = marker
-      Board.new(new_positions)
+      Board.new(size, new_positions)
     end
 
     def is_available?(index)

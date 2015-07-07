@@ -9,7 +9,7 @@ module TicTacToeCore
     let(:players) { [player1, player2] }
 
     def new_board(positions)
-      Board.new(positions.split(''))
+      Board.new(3, positions.split(''))
     end
 
     it "is running when the board is not finished"do
@@ -35,6 +35,13 @@ module TicTacToeCore
       board = Board.create_empty
       game = Game.new(board, players, ui)
       game.run
+    end
+
+    it "tell the game to make a move for the current player" do
+      board = double('Board').as_null_object
+      game = Game.new(board, players, ui)
+      expect(board).to receive(:move)
+      game.make_move(0)
     end
   end
 

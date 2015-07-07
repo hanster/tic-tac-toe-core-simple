@@ -13,7 +13,6 @@ module TicTacToeCore
     end
 
     it "has a marker" do
-
       expect(player.marker).to eq('X')
     end
   end

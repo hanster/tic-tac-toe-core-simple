@@ -9,5 +9,8 @@ module TicTacToeCore
     def next_move(board)
       board.available_moves.sample
     end
+
+    private
+
   end
 end
