@@ -35,7 +35,7 @@ module TicTacToeCore
     private
 
     def update_board(move)
-      @board = board.move(move, current_player.marker)
+      @board = board.move(move, current_player.marker) if move
     end
 
     FIRST = 0
