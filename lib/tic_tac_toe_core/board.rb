@@ -6,6 +6,15 @@ module TicTacToeCore
       [0, 3, 6], [1, 4, 7], [2, 5, 8],
       [0, 4, 8], [2, 4, 6]]
 
+    WINNING_ROWS_HASH = {
+      3 => [ [0, 1, 2], [3, 4, 5], [6, 7, 8],
+             [0, 3, 6], [1, 4, 7], [2, 5, 8],
+             [0, 4, 8], [2, 4, 6]],
+      4 => [ [0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15], 
+             [0, 4, 8, 12], [1, 5, 9, 13], [2, 6, 10, 14], [3, 7, 11, 15], 
+             [0, 5, 10, 15], [3, 6, 9, 12]]
+    }
+
     attr_reader :positions ,:size
 
     def self.create_empty(size = 3)
@@ -74,9 +83,13 @@ module TicTacToeCore
     end
 
     def find_winning_row
-      WINNING_ROWS.find do |winning_row|
+      get_winning_rows.find do |winning_row|
         row_has_winner?(winning_row)
       end
+    end
+
+    def get_winning_rows
+      WINNING_ROWS_HASH[size]
     end
 
     def row_has_winner?(row)
