@@ -34,7 +34,7 @@ module TicTacToeCore
       expect(ui).to receive(:draw)
       board = Board.create_empty
       game = Game.new(board, players, ui)
-      game.play_turn
+      game.run
     end
   end
 

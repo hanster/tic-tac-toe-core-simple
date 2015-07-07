@@ -10,22 +10,22 @@ module TicTacToeCore
       !board.finished?
     end
 
-    def play_turn
+    def run
       draw
       while running?
-        make_player_move
+        play_turn
         draw
       end
+    end
+
+    def play_turn
+      @board = board.move(current_player.next_move(board), current_player.marker)
     end
 
     private
 
     FIRST = 0
     SECOND = 1
-
-    def make_player_move
-      @board = board.move(current_player.next_move(board), current_player.marker)
-    end
 
     def draw
       ui.draw(board)
