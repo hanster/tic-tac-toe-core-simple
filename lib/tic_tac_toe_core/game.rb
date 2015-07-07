@@ -28,6 +28,10 @@ module TicTacToeCore
       update_board(move)
     end
 
+    def draw
+      user_interface.draw(board, current_player.marker)
+    end
+
     private
 
     def update_board(move)
@@ -36,10 +40,6 @@ module TicTacToeCore
 
     FIRST = 0
     SECOND = 1
-
-    def draw
-      user_interface.draw(board, current_player.marker)
-    end
 
     def current_player
       if board.moves_made.even? 
