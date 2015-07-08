@@ -15,13 +15,15 @@ module TicTacToeCore
     it "is running when the board is not finished"do
       board = Board.create_empty
       game = Game.new(board, players, ui)
-      expect(game.running?).to eq(true)
+      expect(game.running?).to be true
+      expect(game.game_over?).to be false
     end
 
     it "is not running when the board is finished" do
       board = new_board('XXX------')
       game = Game.new(board, players, ui)
-      expect(game.running?).to eq(false)
+      expect(game.running?).to be false
+      expect(game.game_over?).to be true
     end
 
     it "plays a turn which will ask the current player to make a move on the board" do

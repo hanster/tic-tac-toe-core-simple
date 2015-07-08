@@ -13,7 +13,7 @@ module TicTacToeCore
     end
 
     def game_over?
-      board.finished
+      board.finished?
     end
 
     def run
