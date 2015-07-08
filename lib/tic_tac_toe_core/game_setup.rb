@@ -48,15 +48,15 @@ module TicTacToeCore
     def create_players(players_type)
       case players_type
       when HVH_GAME_TYPE
-        players = [human(X_MARKER), human(O_MARKER)]
+        [human(X_MARKER), human(O_MARKER)]
       when CVH_GAME_TYPE
-        players = [computer(X_MARKER), human(O_MARKER)]
+        [computer(X_MARKER), human(O_MARKER)]
       when HVC_GAME_TYPE
-        players = [human(X_MARKER), computer(O_MARKER)]
+        [human(X_MARKER), computer(O_MARKER)]
       when CVC_GAME_TYPE
-        players = [computer(X_MARKER), computer(O_MARKER)]
+        [computer(X_MARKER), computer(O_MARKER)]
       else
-        players = [human(X_MARKER), human(O_MARKER)]
+        [human(X_MARKER), human(O_MARKER)]
       end
     end
 

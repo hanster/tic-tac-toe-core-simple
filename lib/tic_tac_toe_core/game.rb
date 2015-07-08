@@ -12,6 +12,10 @@ module TicTacToeCore
       !board.finished?
     end
 
+    def game_over?
+      board.finished
+    end
+
     def run
       draw
       while running?
@@ -21,7 +25,11 @@ module TicTacToeCore
     end
 
     def play_turn
-      update_board(current_player.next_move(board))
+      update_board(get_current_player_move)
+    end
+
+    def get_current_player_move
+      current_player.next_move(board)
     end
 
     def make_move(move)

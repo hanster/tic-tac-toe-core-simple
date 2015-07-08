@@ -41,8 +41,9 @@ module TicTacToeCore
 
     def winner
       winning_row = find_winning_row
-      return first_in_row(winning_row) unless winning_row.nil?
-      nil
+      if winning_row
+        first_in_row(winning_row)
+      end
     end
 
     def won?
