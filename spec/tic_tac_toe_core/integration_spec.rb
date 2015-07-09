@@ -12,15 +12,17 @@ module TicTacToeCore
       game = Game.new(board, players, ui)
       game.run
       expect(game.running?).to be false
+      expect(game.board.tie?).to be true
     end
 
-    it 'players a full 4x4 game' do
+    it 'plays a full 4x4 game' do
       ui = double('UI').as_null_object
       players = [ComputerPlayer.new('X'), ComputerPlayer.new('O')]
       board = Board.create_empty(4)
       game = Game.new(board, players, ui)
       game.run
       expect(game.running?).to be false
+      expect(game.board.tie?).to be true
     end
   end
 end

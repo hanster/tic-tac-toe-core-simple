@@ -51,11 +51,11 @@ module TicTacToeCore
     end
 
     def tie?
-      !won? && no_more_moves?
+      no_more_moves? && !won?
     end
 
     def finished?
-      won? || tie?
+      no_more_moves? || won?
     end
 
     def all_moves
