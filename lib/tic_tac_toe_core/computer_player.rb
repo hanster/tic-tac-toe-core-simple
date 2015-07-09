@@ -2,7 +2,7 @@ require 'tic_tac_toe_core/negamax_ai'
 
 module TicTacToeCore
   class ComputerPlayer
-    MOVE_MATTER_COUNT = 11
+    MOVE_MATTERS_UPPER_COUNT = 11
 
     attr_reader :marker
 
@@ -22,7 +22,7 @@ module TicTacToeCore
     private
 
     def move_matters(board)
-      board.available_moves.count <= MOVE_MATTER_COUNT
+      board.available_moves.count <= MOVE_MATTERS_UPPER_COUNT
     end
 
     attr_reader :ai
