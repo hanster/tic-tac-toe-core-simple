@@ -14,10 +14,6 @@ module TicTacToeCore
       expect(board.is_available?(next_move)).to be true
     end
 
-    it "has a marker" do
-      expect(x_player.marker).to eq('X')
-    end
-
     it "chooses the only available move" do
       board = create_board(3, 'XOXXOXOX-')
       expect(o_player.next_move(board)).to eq(8)

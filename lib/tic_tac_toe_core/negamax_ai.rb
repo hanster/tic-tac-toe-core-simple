@@ -4,6 +4,8 @@ module TicTacToeCore
     START_BETA = 100
     START_VALUE = -100
     DEPTH_LIMIT = 7
+    WIN_SCORE = 100
+    NEUTRAL_SCORE = 0
 
     Move = Struct.new(:index, :value)
 
@@ -41,12 +43,18 @@ module TicTacToeCore
 
     def node_value(board, depth, marker)
       winner = board.winner
-      if winner == nil
-        0
-      elsif winner == marker
-        100
+      if winner
+        score_winner(winner, marker)
       else
-        -100
+        NEUTRAL_SCORE
+      end
+    end
+
+    def score_winner(winner, marker)
+      if winner == marker
+        WIN_SCORE
+      else
+        -WIN_SCORE
       end
     end
 
