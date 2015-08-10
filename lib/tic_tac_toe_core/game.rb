@@ -1,6 +1,7 @@
 module TicTacToeCore
   class Game
-    attr_reader :players, :board, :user_interface
+    attr_reader :players, :user_interface
+    attr_accessor :board
 
     def initialize(board, players, user_interface)
       @board = board
@@ -40,6 +41,10 @@ module TicTacToeCore
       user_interface.draw(board, current_player.marker)
     end
 
+    def current_player_marker
+      current_player.marker
+    end
+
     private
 
     def update_board(move)
@@ -50,7 +55,7 @@ module TicTacToeCore
     SECOND = 1
 
     def current_player
-      if board.moves_made.even? 
+      if board.moves_made.even?
         players[FIRST]
       else
         players[SECOND]

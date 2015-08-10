@@ -2,7 +2,7 @@ require 'tic_tac_toe_core/negamax_ai'
 
 module TicTacToeCore
   class ComputerPlayer
-    MOVE_MATTERS_UPPER_COUNT = 11
+    MOVE_CAN_WIN_OR_BLOCK_FOUR_BY_FOUR_COUNT = 11
 
     attr_reader :marker
 
@@ -12,7 +12,7 @@ module TicTacToeCore
     end
 
     def next_move(board)
-      if move_matters(board)
+      if move_matters?(board)
         ai.next_move(board, marker)
       else
         board.available_moves.sample
@@ -21,8 +21,8 @@ module TicTacToeCore
 
     private
 
-    def move_matters(board)
-      board.available_moves.count <= MOVE_MATTERS_UPPER_COUNT
+    def move_matters?(board)
+      board.available_moves.count <= MOVE_CAN_WIN_OR_BLOCK_FOUR_BY_FOUR_COUNT
     end
 
     attr_reader :ai
